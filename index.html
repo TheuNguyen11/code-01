@@ -1,0 +1,464 @@
+<?php
+session_start();
+require_once 'connect.php';
+if(!isset($_SESSION["login_id"]))
+{
+    header("location: dangnhap.php");
+}
+else{
+?>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vietvalues</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+            li a, .dropbtn{
+            display: inline-block;
+            color: blue;
+            text-align:center;
+            padding:14px 16px;
+            text-decoration: none;
+            }
+            li.dropdown{
+                display:inline-block;
+                
+            }
+            .dropdown-content{
+                display:none;
+                position: absolute;
+                background: #363636;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px;
+                z-index: 1;
+            }
+            .dropdown-content a{
+                color:blue;
+                padding:12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+            .dropdown-content a:hover {background-color: white;}
+            .dropdown:hover .dropdown-content{
+                display:block;
+            }
+            header{
+                background: white;
+                text-align: center;
+                width: 100%;
+            }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="wrapper">
+        <div id="header">
+            <a href="" class="logo">
+                <img src="assets/LOGO.jpg" alt="">
+            </a>
+            <div id="menu">
+
+
+                <div class="item">
+                    <div class ="dropdown">
+                    <a href="taikhoan">HỆ THỐNG</a>
+                    <div id="taikhoan" class="dropdown-content">
+                     <li class="dropdown">
+                    <div class="dropdown-content">
+                        <a href="dangxuat.php" <button id="dangxuat">Đăng xuất</button></a>
+                        <a href="doimatkhau.php" <button id="doimatkhau">Đổi mật khẩu</button></a>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+
+                
+                <div class="item">
+                    <div class ="dropdown">
+                    <a href="chungtu">KẾ TOÁN BÁN HÀNG</a>
+                    <div id="chungtu" class="dropdown-content">
+                     <li class="dropdown">
+                    <div class="dropdown-content">
+                        <li> <a href="hoadon.php"  id="hoadon">Hóa đơn bán hàng</a> </li>
+                        <li> <a href="phieuthu_danhsach.php"  id="phieuthu">Phiếu thu</a> </li>
+                        <li> <a href="phieuyeucau.php"  id="pyc">Phiếu yêu cầu thẩm định</a> </li>
+                        <li> <a href="phieuketqua.php"  id="pkq">Phiếu kết quả thẩm định</a> </li>
+                    </div>
+                    </div>
+                    </div>
+                    
+                                    <div class="item">
+                    <div class="dropdown">
+                    <a href="quanlydanhmuc" >QUẢN LÝ DANH MỤC</a>
+                    <div id="quanlydanhmuc" class="dropdown-content">
+                    <li><a href="hosothamdinh_danhsach.php" id="hosothamdinh" > Hồ sơ thẩm định </a> </li>
+                    <li><a href="dichvu_danhsach.php" id="dichvu">Dịch vụ</a>  </li>
+                    <li><a href="loaitaisan.php" id="taisan">Loại tài sản</a>  </li>
+                    <li><a href="khachhang_danhsach.php" id="khachhang_danhsach">Khách hàng</a>  </li>
+                    </div>
+                </div>
+                </div>
+                
+                
+
+                    
+                    <div class="item">
+                    <div class ="dropdown">
+                    <a href="taikhoan">BÁO CÁO - THỐNG KÊ</a>
+                    <div id="taikhoan" class="dropdown-content">
+                     <li class="dropdown">
+                    <div class="dropdown-content">
+                        <a href="bangcandoiketoan.php" <button id="bangcandoiketoan">Bảng cân đối kế toán</button></a>
+                        <a href="baocaodoanhthu.php" <button id="baocaodoanhthu">Báo cáo doanh thu theo dịch vụ</button></a>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+
+                                        <div class="item">
+                    <div class ="dropdown">
+                    <a href="taikhoan">TRỢ GIÚP</a>
+                    <div id="taikhoan" class="dropdown-content">
+                     <li class="dropdown">
+                    <div class="dropdown-content">
+                        <a href="bangcandoiketoan.php" <button id="bangcandoiketoan">Giới thiệu</button></a>
+                        <a href="baocaodoanhthu.php" <button id="baocaodoanhthu">Hướng dẫn sử dụng</button></a>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div id="actions">
+               <div class="item">
+                    <img src="assets/user.png" alt="">
+              </div>
+                <div class="item">
+                    <img src="assets/cart.png" alt="">
+                    </div>
+            </div>-->
+        </div>
+        <div id="banner">
+            <div class="box-left">
+                <h2>
+                    <span>NHANH CHÓNG</span>
+                    <br>
+                    <span>CHÍNH XÁC</span>
+                </h2>
+                <p>Cam kết cung cấp những dịch vụ chuyên nghiệp với chất lượng tốt nhất.</p>
+            </div>
+            <div class="box-right">
+                <img src="assets/img_1.png" alt="">
+                <img src="assets/img_2.png" alt="">
+                <img src="assets/img_3.png" alt="">
+            </div>
+            <div class="to-bottom">
+                <a href="">
+                    <img src="assets/to_bottom.png" alt="">
+                </a>
+            </div>
+        </div>
+        <div id="wp-products">
+            <h2>DỊCH VỤ CỦA CHÚNG TÔI</h2>
+            <ul id="list-products">
+                <div class="item">
+                    <img src="assets/product_1.png" alt="">
+                    <div class="stars">
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                    </div>
+
+                    <div class="name">Thẩm Định Giá Bất Động Sản</div>
+                </div>
+
+
+                <div class="item">
+                    <img src="assets/product_2.png" alt="">
+                    <div class="stars">
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                    </div>
+
+                    <div class="name">Thẩm Định Giá Động Sản</div>
+                </div>
+
+
+                <div class="item">
+                    <img src="assets/product_3.png" alt="">
+                    <div class="stars">
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                    </div>
+
+                    <div class="name">Định giá doanh nghiệp</div>
+                </div>
+                <div class="item">
+                    <img src="assets/product_4.png" alt="">
+                    <div class="stars">
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                    </div>
+
+                    <div class="name">Tư Vấn Và Phát Triển Bất Động Sản</div>
+                </div>
+
+                <div class="item">
+                    <img src="assets/product_5.png" alt="">
+                    <div class="stars">
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                        <span>
+                            <img src="assets/star.png" alt="">
+                        </span>
+                    </div>
+
+                    <div class="name">Nghiên Cứu Thị Trường</div>
+                </div>
+
+                
+            </ul>
+            <div class="list-page">
+                <div class="item">
+                    <a href="">1</a>
+                </div>
+                <div class="item">
+                    <a href="">2</a>
+                </div>
+                <div class="item">
+                    <a href="">3</a>
+                </div>
+                <div class="item">
+                    <a href="">4</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="saleoff">
+            <div class="box-left">
+                <h1>
+                    <span>ĐỘI NGŨ CHUYÊN NGHIỆP</span>
+                    <span>VIETVALUES</span>
+                </h1>
+            </div>
+            <div class="box-right"></div>
+        </div>
+
+        <div id="comment">
+            <h2>DỰ ÁN</h2>
+            <div id="comment-body">
+                <div class="prev">
+                    <a href="#">
+                        <img src="assets/prev.png" alt="">
+                    </a>
+                </div>
+                <ul id="list-comment">
+                    <li class="item">
+                        <div class="avatar">
+                            <img src="assets/avatar_1.png" alt="">
+
+                        </div>
+                        <div class="stars">
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                        </div>
+                        <div class="name">THUẬN KIỀU PLAZA - Q5</div>
+
+                        <div class="text">
+                            <p>
+                                - Diện tích đất: 10.432 m2</p>
+                            <p>- Diện tích thương mại (3-tầng): 26.083 m2</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="avatar">
+                            <img src="assets/avatar_1.png" alt="">
+
+                        </div>
+                        <div class="stars">
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                        </div>
+                        <div class="name">KHU DÂN CƯ HÀ ĐÔ - QUẬN 12</div>
+
+                        <div class="text">
+                            <p>- Diện tích đất: 54.982 m2
+                                - Diện tích đất ở: 40.688 m2
+                                - Căn hộ: 3.772 m2
+                                - Nhà phố: 19.110 m2
+                                - Công cộng: 14.293 m2</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="avatar">
+                            <img src="assets/avatar_1.png" alt="">
+
+                        </div>
+                        <div class="stars">
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                            <span>
+                                <img src="assets/star.png" alt="">
+                            </span>
+                        </div>
+                        <div class="name">JAMONA GOLDEN SILK, QUẬN 7</div>
+
+                        <div class="text">
+                            <p>- Diện tích đất: 76.820 m2</p>
+                            <p>- Đất nền: 29.622 m2</p>
+                            <p>- Đất căn hộ: 5.767 m2</p>
+                            <p>- Đất thương mại: 5.997 m2</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="next">
+                    <a href="#">
+                        <img src="assets/next.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer">
+            <div class="box">
+                <div class="logo">
+                    <img src="assets/LOGO.jnp" alt="">
+                </div>
+                <p>19 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, TP. Hồ Chí Minh
++84 (28) 3820 8818 - tdg@vietvalues.com.vn</p>
+            </div>
+            <div class="box">
+                <h3>NỘI DUNG</h3>
+                <ul class="quick-menu">
+                    <div class="item">
+                        <a href="">Trang chủ</a>
+                    </div>
+                    <div class="item">
+                        <a href="">Dịch vụ</a>
+                    </div>
+                    <div class="item">
+                        <a href="">Tin tức</a>
+                    </div>
+                    <div class="item">
+                        <a href="">Liên hệ</a>
+                    </div>
+                </ul>
+            </div>
+            <div class="box">
+                <h3>TƯ VẤN DỊCH VỤ THẨM ĐỊNH</h3>
+                <form action="">
+                    <input type="text" placeholder="Địa chỉ email">
+                    <button>Nhận tin</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+    <?php
+}
+?>
